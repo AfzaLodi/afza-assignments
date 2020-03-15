@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Transaction Details</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+
+  <body>
+  
+   <div class="container">
+    <h1></h1>
+    <h2 align="center"> Account Transaction Enquiry </h2>
+   
+    <table class="table">
+      <tr th:style="${'background: lightskyblue;'}">
+        <th>Account Number</th>
+        <th>Account Name</th>
+        <th>Value Date</th>
+        <th>Currency</th>
+        <th>Debit Amount</th>
+        <th>Credit Amount</th>
+        <th>Debit/Credit</th>
+        <th>Transaction Narrative</th>
+      </tr>
+      <tr th:each="transaction : ${allTransactions}">
+        <td th:text="${transaction.account.accountNumber}"></td>
+        <td th:text="${transaction.account.accountName}"></td>
+        <td th:text="${transaction.valueDate}"></td>
+        <td th:text="${transaction.currency}"></td>
+        <td th:text="${transaction.debitAmount}" th:style="${'color: green;'}"></td>
+        <td th:text="${transaction.creditAmount}" th:style="${'color: green;'}"></td>
+        <td th:text="${transaction.transactionType}"></td>
+        <td th:text="${transaction.transactionNarrative}"></td>
+      </tr>
+    </table>
+    
+    <a href="/getAllAccounts">Back to Accounts</a>
+    
+  </div>
+  </body>
+
+</html>
